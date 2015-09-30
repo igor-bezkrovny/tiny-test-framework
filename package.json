@@ -1,0 +1,33 @@
+{
+	"name"            : "tiny-test-framework",
+	"version"         : "1.0.0",
+	"description"     : "Tiny Test Framework",
+	"main"            : "./dist/tiny-test-framework/tiny-test-framework.js",
+	"scripts"         : {
+		"clean"      : "rimraf dist",
+		"build-ttf"  : "./node_modules/.bin/babel src -s -d dist/tiny-test-framework",
+		"build-test" : "./node_modules/.bin/babel test -s -d dist/test",
+		"test"       : "node ./dist/test/test.js",
+		"build"      : "npm run build-ttf & npm run build-test",
+		"prepublish" : "npm run build"
+	},
+	"repository"      : {
+		"type" : "git",
+		"url"  : "https://github.com/igor-bezkrovny/tiny-test-framework"
+	},
+	"keywords"        : [
+		"tiny",
+		"test",
+		"framework"
+	],
+	"author"          : "Igor Bezkrovny",
+	"license"         : "MIT",
+	"bugs"            : {
+		"url" : "https://github.com/igor-bezkrovny/tiny-test-framework/issues"
+	},
+	"homepage"        : "https://github.com/igor-bezkrovny/tiny-test-framework",
+	"devDependencies" : {
+		"babel"  : "^5.8.23",
+		"rimraf" : "latest"
+	}
+}
