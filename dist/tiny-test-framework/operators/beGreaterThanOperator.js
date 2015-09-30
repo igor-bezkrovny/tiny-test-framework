@@ -25,12 +25,17 @@ var BeGreaterThanOperator = (function (_BaseOperator) {
 
 	_createClass(BeGreaterThanOperator, [{
 		key: 'test',
-		value: function test(value) {
-			_baseOperator.BaseOperator._checkForNumber(this._value, "beGreaterThan");
-			_baseOperator.BaseOperator._checkForNumber(value, "expect");
 
-			_baseOperator.BaseOperator._checkForNaN(this._value, "beGreaterThan");
-			_baseOperator.BaseOperator._checkForNaN(value, "expect");
+		/**
+   * Check if test value (value) is greater than operator argument (this._value)
+   * @param {*} value
+   */
+		value: function test(value) {
+			_baseOperator.BaseOperator.checkForNumber(this._value, "beGreaterThan");
+			_baseOperator.BaseOperator.checkForNumber(value, "expect");
+
+			_baseOperator.BaseOperator.checkForNaN(this._value, "beGreaterThan");
+			_baseOperator.BaseOperator.checkForNaN(value, "expect");
 
 			return value > this._value;
 		}

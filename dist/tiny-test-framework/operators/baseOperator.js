@@ -13,15 +13,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var BaseOperator = (function () {
 	_createClass(BaseOperator, null, [{
-		key: '_checkForNumber',
-		value: function _checkForNumber(value, valueOwner) {
+		key: 'checkForNumber',
+
+		/**
+   * Checks and throws exception if value is not a number
+   * @param {*} value value to check
+   * @param {string} valueOwner value owner name, for example, "operator"
+   */
+		value: function checkForNumber(value, valueOwner) {
 			if (typeof value !== 'number') {
 				throw new Error(valueOwner + ' argument should be a number. ' + typeof value + ' is taken');
 			}
 		}
+
+		/**
+   * Checks and throws an exception if the value is 'not a number' number (isNaN)
+   * @param {*} value value to check
+   * @param {string} valueOwner value owner name, for example, "operator"
+   */
 	}, {
-		key: '_checkForNaN',
-		value: function _checkForNaN(value, valueOwner) {
+		key: 'checkForNaN',
+		value: function checkForNaN(value, valueOwner) {
 			if (isNaN(value)) {
 				throw new Error(valueOwner + ' argument should be a number. NaN is taken');
 			}
@@ -31,6 +43,11 @@ var BaseOperator = (function () {
 	function BaseOperator(value) {
 		_classCallCheck(this, BaseOperator);
 
+		/**
+   * Operator value
+   * @protected
+   * @type {*}
+   */
 		this._value = value;
 	}
 

@@ -25,6 +25,11 @@ var EqOperator = (function (_BaseOperator) {
 
 	_createClass(EqOperator, [{
 		key: 'test',
+
+		/**
+   * Check if test value (value) is equal to operator argument (this._value)
+   * @param {*} value
+   */
 		value: function test(value) {
 			return value === this._value;
 		}

@@ -19,16 +19,41 @@ var Expect = (function () {
 	function Expect(value) {
 		_classCallCheck(this, Expect);
 
+		/**
+   * Base value
+   * @type {*}
+   * @private
+   */
 		this._value = value;
-		this._negate = false;
+
+		/**
+   * Is Expression Negated
+   * @type {boolean}
+   * @private
+   */
+		this._isNegate = false;
 	}
+
+	/**
+  * Negates the expression
+  * @returns {Expect}
+  */
 
 	_createClass(Expect, [{
 		key: 'to',
+
+		/**
+   * Expects instance of BaseOperator Child (instance of EqOperator/BeGreaterThanOperator)
+   * use functions eq(value)/beGreaterThan(value)
+   * @see {@link eq}
+   * @see {@link beGreaterThan}
+   * @param {BaseOperator} operator
+   * @returns {boolean}
+   */
 		value: function to(operator) {
 			if (operator instanceof _operatorsBaseOperator.BaseOperator) {
 				var result = operator.test(this._value);
-				return this._negate ? !result : result;
+				return this._isNegate ? !result : result;
 			}
 
 			throw new Error("Expect#to: method argument expected to be a child of BaseOperator");
@@ -36,7 +61,7 @@ var Expect = (function () {
 	}, {
 		key: 'not',
 		get: function get() {
-			this._negate = !this._negate;
+			this._isNegate = !this._isNegate;
 			return this;
 		}
 	}]);
