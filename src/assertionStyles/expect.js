@@ -8,19 +8,42 @@ export class Expect {
 	 * @param {*} value value to test
 	 */
 	constructor (value) {
+		/**
+		 * Base value
+		 * @type {*}
+		 * @private
+		 */
 		this._value = value;
-		this._negate = false;
+
+		/**
+		 * Is Expression Negated
+		 * @type {boolean}
+		 * @private
+		 */
+		this._isNegate = false;
 	}
 
+	/**
+	 * Negates the expression
+	 * @returns {Expect}
+	 */
 	get not () {
-		this._negate = !this._negate;
+		this._isNegate = !this._isNegate;
 		return this;
 	}
 
+	/**
+	 * Expects instance of BaseOperator Child (instance of EqOperator/BeGreaterThanOperator)
+	 * use functions eq(value)/beGreaterThan(value)
+	 * @see {@link eq}
+	 * @see {@link beGreaterThan}
+	 * @param {BaseOperator} operator
+	 * @returns {boolean}
+	 */
 	to (operator) {
 		if (operator instanceof BaseOperator) {
 			const result = operator.test(this._value);
-			return this._negate ? !result : result;
+			return this._isNegate ? !result : result;
 		}
 
 		throw new Error("Expect#to: method argument expected to be a child of BaseOperator")
