@@ -27,7 +27,7 @@
 	},
 	"homepage"        : "https://github.com/igor-bezkrovny/tiny-test-framework",
 	"devDependencies" : {
-		"babel"  : "^5.8.23",
+		"babel"  : "^6.23.0",
 		"rimraf" : "latest"
 	}
 }
